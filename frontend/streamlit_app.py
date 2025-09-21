@@ -11,6 +11,26 @@ from datetime import datetime
 import os
 from typing import List, Dict, Any
 import io
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Handle missing dependencies gracefully
+try:
+    import rapidfuzz
+    RAPIDFUZZ_AVAILABLE = True
+except ImportError:
+    RAPIDFUZZ_AVAILABLE = False
+    logger.warning("rapidfuzz not available - using fallback fuzzy matching")
+
+try:
+    import google.generativeai
+    GOOGLE_AI_AVAILABLE = True
+except ImportError:
+    GOOGLE_AI_AVAILABLE = False
+    logger.warning("google-generativeai not available - using OpenAI only")
 
 # Configure page
 st.set_page_config(
