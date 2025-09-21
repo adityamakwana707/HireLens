@@ -21,7 +21,19 @@ st.set_page_config(
 )
 
 # API Configuration
-API_BASE_URL = "http://localhost:8000"
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'backend'))
+
+try:
+    from backend.config import config
+    # Use environment-aware API configuration
+    if config.is_cloud_environment():
+        API_BASE_URL = "http://localhost:8000"  # For Streamlit Cloud, backend runs locally
+    else:
+        API_BASE_URL = "http://localhost:8000"
+except ImportError:
+    API_BASE_URL = "http://localhost:8000"
 
 # Custom CSS
 st.markdown("""

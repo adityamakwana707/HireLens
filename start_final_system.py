@@ -1,5 +1,6 @@
 """
 Final HireLens Enhanced System Startup Script
+Enhanced with dual database strategy support
 """
 import subprocess
 import sys
@@ -8,6 +9,14 @@ import os
 from pathlib import Path
 import nltk
 import spacy
+
+# Import configuration
+try:
+    from backend.config import config
+    print(f"🌍 Environment: {config.__class__.__name__}")
+    print(f"🗄️  Database: {config.get_database_url()}")
+except ImportError:
+    print("⚠️  Configuration not available, using defaults")
 
 def setup_packages():
     """Setup and verify required NLP packages"""

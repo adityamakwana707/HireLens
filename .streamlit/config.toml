@@ -1,0 +1,42 @@
+[global]
+# Streamlit Cloud Configuration for HireLens
+developmentMode = false
+
+[server]
+# Server configuration optimized for Streamlit Cloud
+headless = true
+port = 8501
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+# Browser settings
+gatherUsageStats = false
+
+[theme]
+# Custom theme for HireLens
+primaryColor = "#1f77b4"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f2f6"
+textColor = "#262730"
+font = "sans serif"
+
+[logger]
+# Logging configuration
+level = "info"
+messageFormat = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+[client]
+# Client-side optimizations
+showErrorDetails = true
+toolbarMode = "minimal"
+
+[runner]
+# Performance optimizations
+magicEnabled = true
+installTracer = false
+fixMatplotlib = true
+
+[deprecation]
+# Disable deprecation warnings for cleaner logs
+showPyplotGlobalUse = false
