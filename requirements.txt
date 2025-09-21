@@ -8,11 +8,11 @@ pydantic-settings==2.1.0
 # Database - Smart Dependencies for Dual Database Strategy
 sqlalchemy==2.0.23
 
-# PostgreSQL dependencies - Only for development and production with PostgreSQL
-# Skip on Streamlit Cloud and other cloud platforms to avoid psycopg2 installation issues
-psycopg2-binary==2.9.9; platform_system != "Linux" and not (os.environ.get("STREAMLIT_CLOUD") or os.environ.get("DYNO") or os.environ.get("RAILWAY_ENVIRONMENT"))
+# PostgreSQL dependencies - Only for non-Linux platforms (Windows/Mac development)
+# This avoids psycopg2 installation issues on Linux-based cloud platforms
+psycopg2-binary==2.9.9; platform_system != "Linux"
 
-# SQLite dependencies - For cloud deployment and fallback
+# SQLite dependencies - Always available for cloud deployment and fallback
 aiosqlite==0.19.0
 
 # Security & Auth
