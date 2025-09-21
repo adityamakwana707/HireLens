@@ -5,7 +5,7 @@ from fastapi import FastAPI, Depends, HTTPException, status, UploadFile, File, F
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, Float, Boolean, JSON, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
 from typing import List, Optional, Dict, Any
 import os
@@ -1239,4 +1239,21 @@ async def evaluate_resume_against_job(
     )
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    import socket
+    
+    def is_port_in_use(port):
+        """Check if a port is already in use"""
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            return s.connect_ex(('localhost', port)) == 0
+    
+    # Try to find an available port
+    port = 8000
+    while port < 8010 and is_port_in_use(port):
+        port += 1
+    
+    if port >= 8010:
+        print("❌ No available ports found (8000-8009)")
+        exit(1)
+    
+    print(f"🚀 Starting backend on port {port}")
+    uvicorn.run(app, host="0.0.0.0", port=port)
