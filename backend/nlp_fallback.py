@@ -16,16 +16,24 @@ class FallbackNLP:
         self.setup_nltk()
     
     def setup_nltk(self):
-        """Setup NLTK packages"""
+        """Setup NLTK packages with graceful error handling"""
         try:
             nltk_packages = ['punkt', 'averaged_perceptron_tagger', 'stopwords']
             for package in nltk_packages:
                 try:
                     nltk.data.find(f'tokenizers/{package}')
+                    logger.info(f"NLTK {package} available")
                 except LookupError:
-                    nltk.download(package, quiet=True)
+                    try:
+                        logger.info(f"Downloading NLTK {package}...")
+                        nltk.download(package, quiet=True)
+                        logger.info(f"NLTK {package} downloaded")
+                    except Exception as e:
+                        logger.warning(f"Failed to download NLTK {package}: {e}")
+                        logger.info(f"Using fallback for {package}")
         except Exception as e:
             logger.warning(f"NLTK setup failed: {e}")
+            logger.info("Using basic fallback functionality")
     
     def extract_skills(self, text: str) -> List[str]:
         """Extract skills using regex patterns when SpaCy is not available"""

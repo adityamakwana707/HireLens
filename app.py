@@ -26,11 +26,19 @@ def setup_environment():
         for package in nltk_packages:
             try:
                 nltk.data.find(f'tokenizers/{package}')
+                logger.info(f"NLTK {package} already available")
             except LookupError:
-                nltk.download(package, quiet=True)
-        logger.info("NLTK packages verified")
+                try:
+                    logger.info(f"Downloading NLTK {package}...")
+                    nltk.download(package, quiet=True)
+                    logger.info(f"NLTK {package} downloaded successfully")
+                except Exception as e:
+                    logger.warning(f"Failed to download NLTK {package}: {e}")
+                    logger.info(f"App will continue with limited {package} functionality")
+        logger.info("NLTK setup completed")
     except Exception as e:
         logger.warning(f"NLTK setup failed: {e}")
+        logger.info("App will continue with basic functionality")
     
     # Initialize database
     try:
