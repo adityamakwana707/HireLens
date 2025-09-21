@@ -250,9 +250,9 @@ pytest --cov=backend
 4. Add tests
 5. Submit a pull request
 
-## 📄 License
+## 📄 Demo Video
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+You can view project here:- https://drive.google.com/file/d/1uOUuXUhtmHKkTCuKvIrvZBn91_hPryzb/view?usp=sharing
 
 ## 🏆 Hackathon Success Criteria
 
@@ -264,10 +264,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Support
 
-For support, email support@hirelens.ai or create an issue in the repository.
+For support, email adityamak707@gmail.com or create an issue in the repository.
 
 ---
 
 **Built with ❤️ for the Innomatics Research Labs Hackathon**
-# HireLens
 # HireLens
