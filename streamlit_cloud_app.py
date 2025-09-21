@@ -18,6 +18,28 @@ def setup_environment():
     # Set environment variables for Streamlit Cloud
     os.environ.setdefault("STREAMLIT_CLOUD", "true")
     
+    # Setup NLP packages gracefully
+    try:
+        import nltk
+        nltk_packages = ['punkt', 'averaged_perceptron_tagger', 'stopwords']
+        for package in nltk_packages:
+            try:
+                nltk.data.find(f'tokenizers/{package}')
+            except LookupError:
+                nltk.download(package, quiet=True)
+        logger.info("NLTK packages verified")
+    except Exception as e:
+        logger.warning(f"NLTK setup failed: {e}")
+    
+    # Handle SpaCy gracefully (permission issues on Streamlit Cloud)
+    try:
+        import spacy
+        spacy.load('en_core_web_sm')
+        logger.info("SpaCy model available")
+    except Exception as e:
+        logger.warning(f"SpaCy model not available: {e}")
+        logger.info("App will continue with limited NLP features")
+    
     # Initialize database
     try:
         from backend.db.init_db import init_database

@@ -34,9 +34,3 @@ toolbarMode = "minimal"
 [runner]
 # Performance optimizations
 magicEnabled = true
-installTracer = false
-fixMatplotlib = true
-
-[deprecation]
-# Disable deprecation warnings for cleaner logs
-showPyplotGlobalUse = false

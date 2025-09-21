@@ -32,14 +32,14 @@ def setup_packages():
             nltk.download(package, quiet=True)
     print("✅ NLTK packages verified")
     
-    # SpaCy Setup
+    # SpaCy Setup - Handle permission issues gracefully
     try:
         nlp = spacy.load('en_core_web_sm')
         print("✅ SpaCy model verified")
-    except OSError:
-        print("⏳ Installing SpaCy model...")
-        spacy.cli.download('en_core_web_sm')
-        print("✅ SpaCy model installed")
+    except OSError as e:
+        print(f"⚠️  SpaCy model not available: {e}")
+        print("ℹ️  SpaCy features will be limited, but app will continue")
+        # Don't try to download - it causes permission issues on Streamlit Cloud
 
 def start_final_system():
     """Start the final enhanced HireLens system"""
