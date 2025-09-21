@@ -6,10 +6,40 @@ import sys
 import time
 import os
 from pathlib import Path
+import nltk
+import spacy
+
+def setup_packages():
+    """Setup and verify required NLP packages"""
+    print("\n📦 Setting up NLP packages...")
+    
+    # NLTK Setup
+    nltk_packages = ['punkt', 'averaged_perceptron_tagger', 'stopwords']
+    for package in nltk_packages:
+        try:
+            nltk.data.find(f'tokenizers/{package}')
+        except LookupError:
+            print(f"⏳ Downloading NLTK {package}...")
+            nltk.download(package, quiet=True)
+    print("✅ NLTK packages verified")
+    
+    # SpaCy Setup
+    try:
+        nlp = spacy.load('en_core_web_sm')
+        print("✅ SpaCy model verified")
+    except OSError:
+        print("⏳ Installing SpaCy model...")
+        spacy.cli.download('en_core_web_sm')
+        print("✅ SpaCy model installed")
 
 def start_final_system():
     """Start the final enhanced HireLens system"""
     print("🚀 Starting HireLens Enhanced System - Final Version")
+    print("=" * 70)
+    
+    # Setup required packages first
+    setup_packages()
+    
     print("=" * 70)
     print("Backend: http://localhost:8000")
     print("Frontend: http://localhost:8501")
