@@ -1,9 +1,9 @@
-# Core Web Dependencies
-streamlit==1.29.0
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-pydantic==2.5.0
-pydantic-settings==2.1.0
+# Core Web Dependencies (Python 3.13 compatible)
+streamlit>=1.29.0
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
 
 # Database - Smart Dependencies for Dual Database Strategy
 sqlalchemy==2.0.23
@@ -25,24 +25,24 @@ pdfplumber==0.10.3
 python-docx==1.1.0
 docx2txt==0.8
 
-# Essential NLP & ML (optimized versions)
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+# Essential NLP & ML (Python 3.13 compatible versions)
+spacy>=3.7.0
 nltk==3.8.1
-scikit-learn==1.3.2
+scikit-learn>=1.4.0
 rank-bm25==0.2.2
 
 # AI & LLM (core features)
-langchain==0.1.0
-langchain-openai==0.0.2
-openai==1.6.1
+langchain>=0.1.0
+langchain-openai>=0.0.2
+openai>=1.6.1
 
 # Vector Store (minimal)
-faiss-cpu==1.7.4
-sentence-transformers==2.2.2
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
 
 # Frontend Enhancement
-plotly==5.17.0
-pandas==2.1.4
+plotly>=5.17.0
+pandas>=2.1.4
 
 # Utilities
 python-dotenv==1.0.0

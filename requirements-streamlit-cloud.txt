@@ -1,0 +1,50 @@
+# Streamlit Cloud Optimized Requirements
+# This file is specifically designed for Streamlit Cloud deployment
+# with Python 3.13 compatibility and minimal dependencies
+
+# Core Web Dependencies
+streamlit>=1.29.0
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Database - SQLite only for cloud deployment
+sqlalchemy>=2.0.23
+aiosqlite>=0.19.0
+
+# Security & Auth
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.6
+
+# File Processing
+pdfplumber>=0.10.3
+python-docx>=1.1.0
+docx2txt>=0.8
+
+# Essential NLP & ML (Python 3.13 compatible)
+nltk>=3.8.1
+scikit-learn>=1.4.0
+rank-bm25>=0.2.2
+
+# AI & LLM (core features)
+langchain>=0.1.0
+langchain-openai>=0.0.2
+openai>=1.6.1
+
+# Vector Store (minimal)
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
+
+# Frontend Enhancement
+plotly>=5.17.0
+pandas>=2.1.4
+
+# Utilities
+python-dotenv>=1.0.0
+httpx>=0.25.2
+aiofiles>=23.2.1
+
+# Development (optional for cloud)
+pytest>=7.4.3
