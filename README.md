@@ -120,7 +120,7 @@ Student/Recruiter
 
 5. **Run the application**
    ```bash
-   python main.py
+   python start_final_system.py
    ```
 
 ### Alternative: Run Components Separately
